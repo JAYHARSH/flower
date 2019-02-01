@@ -1,4 +1,3 @@
-require('./config/config.js');
 require('./models/db');
 require('./config/passportConfig');
 
@@ -18,19 +17,6 @@ app.get('/*', (req, res) => {
     res.sendFile(path.join(__dirname,'/dist/flower/index.html'));
 });
 app.use('/api',rtsIndex);
-
-//error handler 
-
-app.use((err,req,res,next)=>{
-    if(err.name==='ValidateErrors')
-    {
-        var valErrors=[];
-        Object.keys(err.errors).forEach(key =>valErrors.push(err.errors[key].message));
-        res.status(422).send(valErrors);
-       
-    }
-
-});
 
 
 app.listen(process.env.PORT || 3000)
