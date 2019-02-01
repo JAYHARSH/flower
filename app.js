@@ -33,4 +33,4 @@ app.use((err,req,res,next)=>{
 });
 
 var port = process.env.PORT || CONFIG.port;
-app.listen(port);
+app.listen(port,'0.0.0.0');
