@@ -6,6 +6,7 @@ import {Product} from '../shared/product.model';
 import { Observable } from 'rxjs';
 import { Compiler } from '@angular/core';
 import { map } from "rxjs/operators";
+import { Http, Response } from '@angular/http';
 @Component({
   selector: 'app-catalog',
   templateUrl: './catalog.component.html',
@@ -23,7 +24,7 @@ export class CatalogComponent implements OnInit {
 
   ngOnInit() {
     
-    this.productService.getProductList().subscribe(res=>this.productlist=res);
+    this.productService.getProductList().then(res=>this.productlist=res);
           }
 
  
