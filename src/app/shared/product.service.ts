@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient,HttpHeaders} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {Product} from '../shared/product.model';
-
+import { Http, Response } from '@angular/http';
 @Injectable({
   providedIn: 'root'
 })
@@ -20,6 +20,6 @@ export class ProductService {
   
   getProductList()
   {
-   return this.http.get('/api/catalog').toPromise().then(res=>res.json as Product[])
+   return this.http.get('/api/catalog').toPromise().then(res=>res.json() as Product[])
   }
 }
