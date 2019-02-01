@@ -22,7 +22,7 @@ export class CatalogComponent implements OnInit {
 
   ngOnInit() {
     
-    this.productService.getProductList().subscribe(res=>{this.productlist=res;});
+    this.productService.getProductList().subscribe(res=>{this.productlist=res;console.log(res)});
           }
 
  

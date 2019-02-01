@@ -20,6 +20,6 @@ export class ProductService {
   
   getProductList()
   {
-   return this.http.get('/api/catalog').map(res=>res.json())
+   return this.http.get('/api/catalog')
   }
 }
