@@ -1,0 +1,11 @@
+
+  product-form works!
+  <form  #f="ngForm" (ngSubmit)="save(f.value)">
+    <label for="productname">ProductName</label>
+    <input #productname="ngModel" ngModel="productname" type="text" name="productname" placeholder="Enter your ProductName"><br>
+    <label for="productprice">ProductName</label>
+    <input #productprice="ngModel" type="text" ngModel="productprice" name="productprice" placeholder="Enter your ProductPrice"><br>
+    <input #imageurl="ngModel" type="text" ngModel="imageurl" name="imageurl" placeholder="Enter your Imageurl"><br>
+    <input type="submit" class="btn btn-primary" value="Save">
+  </form>
+

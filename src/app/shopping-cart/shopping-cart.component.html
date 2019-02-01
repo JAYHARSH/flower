@@ -1,0 +1,9 @@
+
+<h2>Your Cart</h2> 
+<ul class="list-group" *ngFor="let item of cartitems">
+    <li class="list-group-item">
+    <img src="{{item.product.imageurl}}" alt="{{item.product.productname}}">
+    Name:<span class="badge badge-success">{{item.product.productname}}</span>
+    Price:=<span class="badge badge-info">{{item.product.productprice}}</span>
+    Quantity:=<span class="badge badge-light">{{item.quantity}}</span>
+</li>

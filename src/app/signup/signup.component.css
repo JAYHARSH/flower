@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css?family=Pacifico');
+.container
+{
+    border:4px solid black;
+    margin-left:30%;
+    margin-top:5%;
+    width:30%;
+    height:50%;
+    font-family: 'Pacifico', cursive;  
+}
+
+span{
+    width:30px;
+    height:30px;
+    margin-left:10%;
+}
+
+.btn 
+{
+    background-color: pink;
+}

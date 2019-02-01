@@ -1,0 +1,15 @@
+
+<div class="container">
+  <div>Sign In</div>
+  <form  #signInForm="ngForm" (ngSubmit)="signInForm.valid && onSubmit(signInForm)">
+   <label for="email">Email</label>
+   <input type="text" name="email" class="form-control" #email="ngModel" [(ngModel)]="model.email" placeholder="Email">
+   <label for="password">Password</label>
+   <input type="password" class="form-control" name="password" #password="ngModel" [(ngModel)]="model.password" placeholder="Password" required minlength="4">
+   <input class="btn btn-primary" type="submit" value="SignIn"> 
+ </form>
+ <div class="alert" *ngIf="serverErrorMessages">
+   {{serverErrorMessages}}
+ </div>
+
+</div>

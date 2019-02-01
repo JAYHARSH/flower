@@ -1,0 +1,14 @@
+<h2>Products and Promotions</h2>
+<div class="container">
+        <div class="card" style="width: 18rem;" *ngFor="let product of productlist">
+                <img class="card-img-top" src="{{product.imageurl}}" alt="{{product.productname}}">
+                <div class="card-body">
+                  <p class="card-text">{{product.productname}}</p>
+                  <p class="card-text">{{product.productprice}}</p>
+                  <button type="button"  class="btn btn-primary" (click)="AddtoCart(product)">AddtoCart</button>      
+                </div>
+        </div>
+        <br>     
+        <br/>
+</div>
+   

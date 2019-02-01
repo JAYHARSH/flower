@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css?family=Pacifico');
+table
+{
+    font-family: 'Pacifico',cursive;
+}
+
+table .btn
+{
+    background-color: pink;
+}
