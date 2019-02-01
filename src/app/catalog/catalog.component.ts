@@ -22,7 +22,7 @@ export class CatalogComponent implements OnInit {
 
   ngOnInit() {
     
-    this.productService.getProductList().subscribe(res=>{this.productlist=res;}).map(res=>res.json());
+    this.productService.getProductList().subscribe(res=>{this.productlist=res;});
           }
 
  

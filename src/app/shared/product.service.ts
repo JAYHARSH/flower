@@ -15,7 +15,7 @@ export class ProductService {
   create(product)
   {
   console.log(product);
-   return this.http.post('/api/product',product,this.noAuthHeader)
+   return this.http.post('/api/product',product,this.noAuthHeader).map(res=>res.json());
   }
   
   getProductList()
