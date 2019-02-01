@@ -32,5 +32,11 @@ app.use((err,req,res,next)=>{
 
 });
 
-var port = process.env.PORT || CONFIG.port;
-app.listen(port,'0.0.0.0');
+
+app.listen(process.env.PORT, function (err, address) {
+    if (err) {
+      fastify.log.error(err)
+      process.exit(1)
+    }
+    app.log.info(`server listening on ${address}`)
+  })
