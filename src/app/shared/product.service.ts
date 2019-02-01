@@ -19,6 +19,6 @@ export class ProductService {
   
   getProductList()
   {
-   return this.http.get('/api/catalog')
+   return this.http.get('/api/catalog').toPromise()
   }
 }
