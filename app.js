@@ -1,3 +1,4 @@
+
 require('./models/db');
 require('./config/passportConfig');
 
@@ -18,5 +19,5 @@ app.get('/*', (req, res) => {
 });
 app.use('/api',rtsIndex);
 
-
+//error handler 
 app.listen(process.env.PORT || 3000)
