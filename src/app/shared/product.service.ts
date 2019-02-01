@@ -20,6 +20,6 @@ export class ProductService {
   
   getProductList()
   {
-   return this.http.get('/api/catalog')
+   return this.http.get('https://jaysflower.herokuapp.com/api/catalog')
   }
 }
