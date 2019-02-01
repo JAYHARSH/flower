@@ -33,10 +33,4 @@ app.use((err,req,res,next)=>{
 });
 
 
-app.listen(process.env.PORT, function (err, address) {
-    if (err) {
-      fastify.log.error(err)
-      process.exit(1)
-    }
-    app.log.info(`server listening on ${address}`)
-  })
+app.listen(process.env.PORT,()=>{ console.log('Server started')});
