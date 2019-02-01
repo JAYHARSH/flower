@@ -1,5 +1,6 @@
 const mongoose =require('mongoose');
-mongoose.connect(process.env.MONGODB_URI,{ useNewUrlParser: true},(err)=>{
+
+mongoose.connect("mongodb://newuser:mastermind007@ds161894.mlab.com:61894/stackdb",{ useNewUrlParser: true},(err)=>{
 if(!err)
 {
 console.log('Mongodb connection successful');
