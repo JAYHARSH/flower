@@ -46,6 +46,6 @@ userSchema.methods.verifyPassword=function(password)
 };
 
 userSchema.methods.generateJwt=function(){
-    return jwt.sign({_id:this._id},process.env.JWT_SECRET);
+    return jwt.sign({_id:this._id},"1234");
 }
 mongoose.model('User',userSchema);
