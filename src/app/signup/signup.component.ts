@@ -11,7 +11,7 @@ export class SignupComponent implements OnInit {
   showSuccess:boolean;
   serverError: string;
 
-  constructor(private userService:UserService) {
+  constructor(public userService:UserService) {
     
    }
 
