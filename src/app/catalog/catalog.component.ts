@@ -11,7 +11,7 @@ import { Compiler } from '@angular/core';
   styleUrls: ['./catalog.component.css']
 })
 export class CatalogComponent implements OnInit {
-   productlist:Product[];
+   productlist;
    product:any;
    userDetails:any;
    cartid;
@@ -22,7 +22,7 @@ export class CatalogComponent implements OnInit {
 
   ngOnInit() {
     
-    this.productService.getProductList().then(res=>res.json() as this.productlist);
+    this.productService.getProductList().subscribe(res=>this.productlist=res);
           }
 
  
