@@ -14,7 +14,7 @@ module.exports.verifyJwtToken = (req,res,next) => {
  }
  else
  {
-      jwt.verify(token,process.env.JWT_SECRET,(err,decoded)=>{
+      jwt.verify(token,"1234",(err,decoded)=>{
           if(err)
           {
             return res.status(500).send({auth:false,message:'authentication failed'});
