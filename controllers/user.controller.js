@@ -147,8 +147,7 @@ module.exports.insertcart=(req,res,next) => {
             res.status(404).json({status:false,message:'user record not found'});
         }
         else 
-        {  
-            
+        {   
            if(user.cart.length==0)
            {
             
