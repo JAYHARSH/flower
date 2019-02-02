@@ -110,7 +110,7 @@ module.exports.userProfile = (req,res,next) =>{
             res.status(200).json({status:true, user: _.pick(user,['_id','fullName','email'])});
         }
     })(req,res);*/
-    User.find((err,user)=>{
+    User.findOne({"_id":req._id},(err,user)=>{
         if(err)
         {
             res.status(404).json({status:false,message:'user record not found'});
