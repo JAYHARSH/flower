@@ -1,6 +1,6 @@
 const mongoose= require('mongoose');
 const passport=require('passport');
-const User=mongoose.model('User');
+var User=mongoose.model('User');
 const Product=mongoose.model('Product');
 /*const ShoppingCart=mongoose.model('ShoppingCart');*/
 const _ =require('lodash');
@@ -105,7 +105,9 @@ module.exports.catalog = (req,res,next) =>{
           console.log(id) 
           var found;
           var flag=false;
-          
+
+
+        
          User.findOne({'_id': new ObjectID(id)},(err,user)=>{
              if(!user)
              {     
@@ -167,6 +169,8 @@ module.exports.catalog = (req,res,next) =>{
              }
          })(req,res);
          }
+
+
       
      
      
