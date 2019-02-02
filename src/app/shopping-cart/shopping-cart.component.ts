@@ -14,7 +14,7 @@ export class ShoppingCartComponent implements OnInit {
   constructor(private cartService:CartService,private userService:UserService) { }
 
   ngOnInit() {
-    this.userService.getUserProfile().then(
+    this.userService.getUserProfile().subscribe(
 
       res=>{
        this.userDetails = res['user'];

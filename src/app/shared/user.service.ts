@@ -29,7 +29,7 @@ export class UserService {
 
   async getUserProfile()
   {
-    return await this.http.get('/api/userProfile').toPromise()
+    return await this.http.get('/api/userProfile')
   }
   setToken(token:string)
   {
