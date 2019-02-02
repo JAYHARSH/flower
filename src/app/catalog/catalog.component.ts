@@ -30,7 +30,7 @@ export class CatalogComponent implements OnInit {
  
   AddtoCart(product)
   {
-    this.userService.getUserProfile().then(
+    this.userService.getUserProfile().subscribe(
       res=>{
        this.userDetails = res['user'];
        console.log(res['user'])
