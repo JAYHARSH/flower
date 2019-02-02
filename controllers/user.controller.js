@@ -141,18 +141,17 @@ module.exports.insertcart=(req,res,next) => {
     var found;
     var flag=false;
      
-    User.findOne({"_id": id},(err,user)=>{
+    User.findOne({"_id": new ObjectID(id)},(err,user)=>{
         if(!user)
         {     
             res.status(404).json({status:false,message:'user record not found'});
         }
         else 
         {  
-            console.log('I am near inside else')
-           console.log(user.cart)
+            
            if(user.cart.length==0)
            {
-            console.log('first item')
+            
             user.cart.push({product:req.body._id,quantity:0})
             user.save(function(err,docs){
                 if(err)
@@ -168,12 +167,11 @@ module.exports.insertcart=(req,res,next) => {
                 {
                   this.found=item; 
                   this.flag=true; 
-                  console.log(this.found)
-                }
+                 }
             })
             if(this.flag==false || this.found==undefined)
             {  
-             console.log('its my secont third .. item')
+            
             user.cart.push({product:req.body._id,quantity:0})
             user.save(function(err,docs){
                 if(err)
@@ -184,8 +182,8 @@ module.exports.insertcart=(req,res,next) => {
             }
             else 
             {
-                console.log('its a match')
-                console.log(this.found)
+                
+                
                 this.found.quantity++;
                 user.save(function(err,docs){
                     if(err)
