@@ -27,9 +27,9 @@ export class UserService {
   return this.http.post('/api/authenticate',authcredentials,this.noAuthHeader);
   }
 
-  async getUserProfile()
+   getUserProfile()
   {
-    return await this.http.get('/api/userProfile')
+    return  this.http.get('/api/userProfile')
   }
   setToken(token:string)
   {
