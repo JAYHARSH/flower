@@ -103,7 +103,7 @@ module.exports.userProfile = (req,res,next) =>{
         {
             res.status(200).json({status:true, user: _.pick(user,['_id','fullName','email'])});
         }
-    })(req,res);*/
+    })(req,res);
 }
 
 module.exports.catalog = (req,res,next) =>{
