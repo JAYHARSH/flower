@@ -93,8 +93,9 @@ module.exports.authenticate = (req,res,next) =>{
 
 }
 module.exports.userProfile = (req,res,next) =>{
-     console.log(req._id);
-     User.findOne({_id:req._id},(err,user)=>{
+
+    res.json({id:req._id})
+    /* User.findOne({_id:req._id},(err,user)=>{
         if(!user)
         {
             res.status(404).json({status:false,message:'user record not found'});
@@ -103,7 +104,7 @@ module.exports.userProfile = (req,res,next) =>{
         {
             res.status(200).json({status:true, user: _.pick(user,['_id','fullName','email'])});
         }
-    })(req,res);
+    })(req,res);*/
 }
 
 module.exports.catalog = (req,res,next) =>{
