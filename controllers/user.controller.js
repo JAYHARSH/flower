@@ -93,7 +93,8 @@ module.exports.authenticate = (req,res,next) =>{
 
 }
 module.exports.userProfile = (req,res,next) =>{
-    res.status(200).json({req:req.body});
+     
+     res.json({"id":req._id});   
     User.findOne({_id:req._id},(err,user)=>{
         if(!user)
         {
