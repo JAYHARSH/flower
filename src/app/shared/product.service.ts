@@ -21,6 +21,6 @@ export class ProductService {
   
   getProductList()
   {
-   return this.http.get('/api/catalog').map(res=>res.data)
+   return this.http.get('/api/catalog')
   }
 }
