@@ -107,11 +107,6 @@ module.exports.catalog = (req,res,next) =>{
           var found;
           var flag=false;
             
-        User.findOne({'_id': new ObjectID(id)},(err,user)=>{
-            res.json({user:user})
-        })
-    }
-      /*  
          User.findOne({'_id': new ObjectID(id)},(err,user)=>{
              if(!user)
              {     
@@ -123,14 +118,16 @@ module.exports.catalog = (req,res,next) =>{
                 console.log(user.cart)
                 if(user.cart.length==0)
                 {
-                 console.log('first item')
-                 user.cart.push({product:req.body._id,quantity:0})
-                 user.save(function(err,docs){
-                     if(err)
-                     console.log(err)
-                     else
-                     res.send(docs)
-                 })
+          
+                User.update({'_id': new ObjectID(id)}, 
+                { $push: { 
+                         cart: { 
+                                $each: [{product:req.body._id,quantity:0}] 
+                               } 
+                          } 
+                }
+            )
+                
                 }
                 else
                 {
@@ -144,17 +141,18 @@ module.exports.catalog = (req,res,next) =>{
                  })
                  if(this.flag==false || this.found==undefined)
                  {  
-                  console.log('its my secont third .. item')
-                 user.cart.push({product:req.body._id,quantity:0})
-                 user.save(function(err,docs){
-                     if(err)
-                     console.log(err)
-                     else
-                     res.send(docs)
-                  })
-                 }
+                User.update({'_id': new ObjectID(id)}, 
+                { $push: { 
+                         cart: { 
+                                $each: [{product:req.body._id,quantity:0}] 
+                               } 
+                          } 
+                }
+                )               
+                  }
                  else 
                  {
+                     
                      console.log('its a match')
                      console.log(this.found)
                      this.found.quantity++;
@@ -173,7 +171,6 @@ module.exports.catalog = (req,res,next) =>{
              }
          })(req,res);
          }
-*/
 
       
      
