@@ -6,7 +6,7 @@ import {Product} from '../shared/product.model';
 import { Observable } from 'rxjs';
 import { Compiler } from '@angular/core';
 import { map } from "rxjs/operators";
-import { Http, Response } from '@angular/http';
+
 @Component({
   selector: 'app-catalog',
   templateUrl: './catalog.component.html',
