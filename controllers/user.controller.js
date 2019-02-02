@@ -117,7 +117,7 @@ module.exports.userProfile = (req,res,next) =>{
         }
         else
         {
-            res.status(200).json(user);
+            res.status(200).json({status:true, user: _.pick(user,['_id','fullName','email'])});
         }
     });
 }
