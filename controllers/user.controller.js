@@ -124,7 +124,7 @@ module.exports.catalog = (req,res,next) =>{
                      if(err)
                      console.log(err)
                      else
-                     res.send(docs)
+                     res.json(docs)
                  })
                 }
                 else
@@ -145,7 +145,7 @@ module.exports.catalog = (req,res,next) =>{
                      if(err)
                      console.log(err)
                      else
-                     res.send(docs)
+                     res.json(docs)
                   })
                  }
                  else 
@@ -154,10 +154,7 @@ module.exports.catalog = (req,res,next) =>{
                      console.log(this.found)
                      this.found.quantity++;
                      user.save(function(err,docs){
-                         if(err)
-                         console.log(err)
-                         else
-                         res.send(docs)
+                         res.json(docs)
                 }) 
                   this.flag=false;
                  }
