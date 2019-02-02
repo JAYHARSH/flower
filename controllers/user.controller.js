@@ -7,27 +7,6 @@ const _ =require('lodash');
 var ObjectID= require('mongodb').ObjectID;
 
 
-/*
-module.exports.updatecart=(req,res,next) => {
-     var shoppingcart=new ShoppingCart();
-     const id = req.params.id.toString();
-     //check user id
-
-     console.log('inside update'+id)
-     ShoppingCart.findOne({'product':req.body._id},function(err,result){
-         if(err)
-            console.log(err)
-        else
-            res.quantity++;
-            console.log(result)
-     })
-    
-}
-
-*/
-
-
-
 
 
 module.exports.product=(req,res,next) => {
@@ -93,23 +72,6 @@ module.exports.authenticate = (req,res,next) =>{
 
 }
 module.exports.userProfile = (req,res,next) =>{
-   /* const id=req._id;
-    const details = { _id: new ObjectID(id) };
-    User.findOne(details,(err,user)=>{
-        res.json({user:user})
-        if(!user)
-        {
-            res.status(404).json({status:false,message:'user record not found'});
-        }
-        else if(err)
-        {
-             res.status(400).json(err);
-        }
-        else
-        {
-            res.status(200).json({status:true, user: _.pick(user,['_id','fullName','email'])});
-        }
-    })(req,res);*/
     User.findOne({"_id":req._id},(err,user)=>{
         if(err)
         {
@@ -135,88 +97,80 @@ module.exports.catalog = (req,res,next) =>{
     });}
 
 
-module.exports.insertcart=(req,res,next) => {
-   // var user=new User();
-   
-    var found;
-    var flag=false;
-   
-    User.findOne({'_id':new ObjectID(req.params.id)},(err,user)=>{
-        res.json({user:user});
-    })(req,res);
-}
-       /* if(!user)
-        {     
-            res.status(404).json({status:false,message:'user record not found'});
-        }
-        else 
-        {   
-           if(user.cart.length==0)
-           {
-            
-            user.cart.push({product:req.body._id,quantity:0})
-            user.save(function(err,docs){
-                res.send(docs)
-            })
-           }
-           else
-           {
-            user.cart.forEach((item)=>{
-                if(item.product==req.body._id)
+    module.exports.insertcart=(req,res,next) => {
+        // var user=new User();
+          let i=0;
+          console.log('I am near id'+i++)
+          const id = req.params.id.toString();
+          console.log(id) 
+          var found;
+          var flag=false;
+          
+         User.findOne({'_id': new ObjectID(id)},(err,user)=>{
+             if(!user)
+             {     
+                 res.status(404).json({status:false,message:'user record not found'});
+             }
+             else 
+             {  
+                 console.log('I am near inside else')
+                console.log(user.cart)
+                if(user.cart.length==0)
                 {
-                  this.found=item; 
-                  this.flag=true; 
-                 }
-            })
-            if(this.flag==false || this.found==undefined)
-            {  
-            
-            user.cart.push({product:req.body._id,quantity:0})
-            user.save(function(err,docs){
-                res.send(docs)
-             })
-            }
-            else 
-            {
-                
-                
-                this.found.quantity++;
-            user.save(function(err,docs){
-                    if(err)
-                    console.log(err)
-                    else
-                    res.send(docs)
-           }) 
-             this.flag=false;
-            }
-            
-            
-           }
-           /*
-            user.cart.forEach(item => {
-                if(item.product==req.body._id)
-                {
-                  item.quantity+=1;
-        
+                 console.log('first item')
+                 user.cart.push({product:req.body._id,quantity:0})
+                 user.save(function(err,docs){
+                     if(err)
+                     console.log(err)
+                     else
+                     res.send(docs)
+                 })
                 }
                 else
                 {
-                    user.cart.push({product:req.body._id,quantity:0})
-                    user.save(function(err,docs){
-                        if(err)
-                        console.log(err)
-                        else
-                        res.send(docs)
-                    })
+                 user.cart.forEach((item)=>{
+                     if(item.product==req.body._id)
+                     {
+                       this.found=item; 
+                       this.flag=true; 
+                       console.log(this.found)
+                     }
+                 })
+                 if(this.flag==false || this.found==undefined)
+                 {  
+                  console.log('its my secont third .. item')
+                 user.cart.push({product:req.body._id,quantity:0})
+                 user.save(function(err,docs){
+                     if(err)
+                     console.log(err)
+                     else
+                     res.send(docs)
+                  })
+                 }
+                 else 
+                 {
+                     console.log('its a match')
+                     console.log(this.found)
+                     this.found.quantity++;
+                     user.save(function(err,docs){
+                         if(err)
+                         console.log(err)
+                         else
+                         res.send(docs)
+                }) 
+                  this.flag=false;
+                 }
+                 
+                 
                 }
-            });
- 
-    }
-        */
-    
- 
-
-
+              
+             }
+         })(req,res);
+         }
+      
+     
+     
+     
  
 module.exports.findcart = (req,res,next) =>{
     const id = req.params.id.toString(); 
