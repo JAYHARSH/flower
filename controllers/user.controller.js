@@ -94,7 +94,7 @@ module.exports.authenticate = (req,res,next) =>{
 }
 module.exports.userProfile = (req,res,next) =>{
     const id=req._id;
-    const details = { '_id': new ObjectID(id) };
+    const details = { _id: new ObjectID(id) };
     User.findOne(details,(err,user)=>{
         res.json({user:user})
         if(!user)
