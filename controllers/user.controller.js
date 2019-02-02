@@ -141,7 +141,7 @@ module.exports.insertcart=(req,res,next) => {
     var found;
     var flag=false;
      
-    User.findOne({'_id': new ObjectID(req.params.id)},(err,user)=>{
+    User.findOne({'_id':req.params.id},(err,user)=>{
         if(!user)
         {     
             res.status(404).json({status:false,message:'user record not found'});
@@ -184,7 +184,7 @@ module.exports.insertcart=(req,res,next) => {
                 
                 
                 this.found.quantity++;
-                user.save(function(err,docs){
+            user.save(function(err,docs){
                     if(err)
                     console.log(err)
                     else
