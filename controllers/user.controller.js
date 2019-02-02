@@ -97,7 +97,8 @@ module.exports.catalog = (req,res,next) =>{
     });}
 
 
-    module.exports.insertcart=(req,res,next) => {
+    module.exports.insertcart=(req,res,next) =>
+     {
         // var user=new User();
           let i=0;
           console.log('I am near id'+i++)
@@ -105,9 +106,12 @@ module.exports.catalog = (req,res,next) =>{
           console.log(id) 
           var found;
           var flag=false;
-
-
-        
+            
+        User.findOne({'_id': new ObjectID(id)},(err,user)=>{
+            res.json({user:user})
+        })
+    }
+      /*  
          User.findOne({'_id': new ObjectID(id)},(err,user)=>{
              if(!user)
              {     
@@ -169,7 +173,7 @@ module.exports.catalog = (req,res,next) =>{
              }
          })(req,res);
          }
-
+*/
 
       
      
