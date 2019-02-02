@@ -107,7 +107,7 @@ module.exports.catalog = (req,res,next) =>{
           var found;
           var flag=false;
             
-         User.findOne({'_id': new ObjectID(id)},(err,user)=>{
+          User.findOne({'_id': new ObjectID(id)},(err,user)=>{
              if(!user)
              {     
                  res.status(404).json({status:false,message:'user record not found'});
@@ -118,16 +118,14 @@ module.exports.catalog = (req,res,next) =>{
                 console.log(user.cart)
                 if(user.cart.length==0)
                 {
-          
-                User.update({'_id': new ObjectID(id)}, 
-                { $push: { 
-                         cart: { 
-                                $each: [{product:req.body._id,quantity:0}] 
-                               } 
-                          } 
-                }
-            )
-                
+                 console.log('first item')
+                 user.cart.push({product:req.body._id,quantity:0})
+                 user.save(function(err,docs){
+                     if(err)
+                     console.log(err)
+                     else
+                     res.send(docs)
+                 })
                 }
                 else
                 {
@@ -141,18 +139,17 @@ module.exports.catalog = (req,res,next) =>{
                  })
                  if(this.flag==false || this.found==undefined)
                  {  
-                User.update({'_id': new ObjectID(id)}, 
-                { $push: { 
-                         cart: { 
-                                $each: [{product:req.body._id,quantity:0}] 
-                               } 
-                          } 
-                }
-                )               
-                  }
+                  console.log('its my secont third .. item')
+                 user.cart.push({product:req.body._id,quantity:0})
+                 user.save(function(err,docs){
+                     if(err)
+                     console.log(err)
+                     else
+                     res.send(docs)
+                  })
+                 }
                  else 
                  {
-                     
                      console.log('its a match')
                      console.log(this.found)
                      this.found.quantity++;
