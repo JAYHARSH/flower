@@ -14,10 +14,11 @@ app.use(bodyParser.urlencoded({ extended: false}));
 app.use(cors());
 app.use(passport.initialize());
 app.use(express.static('./dist/flower'));
-app.get('/*', (req, res) => {
-    res.sendFile(path.join(__dirname,'/dist/flower/index.html'));
-});
+
 app.use('/api',rtsIndex);
 
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname,'/dist/flower/index.html'));
+});
 //error handler 
 app.listen(process.env.PORT || 3000)
