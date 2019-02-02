@@ -141,9 +141,11 @@ module.exports.insertcart=(req,res,next) => {
     var found;
     var flag=false;
    
-    User.findOne({'_id':new ObjectID(req.params.id.toString())},(err,user)=>{
+    User.findOne({'_id':new ObjectID(req.params.id)},(err,user)=>{
         res.json({user:user});
-        if(!user)
+    })(req,res);
+}
+       /* if(!user)
         {     
             res.status(404).json({status:false,message:'user record not found'});
         }
@@ -160,7 +162,7 @@ module.exports.insertcart=(req,res,next) => {
            else
            {
             user.cart.forEach((item)=>{
-                if(item.product==req._id)
+                if(item.product==req.body._id)
                 {
                   this.found=item; 
                   this.flag=true; 
@@ -209,10 +211,9 @@ module.exports.insertcart=(req,res,next) => {
                 }
             });
  
-        */
-        }
-    })(req,res);
     }
+        */
+    
  
 
 
