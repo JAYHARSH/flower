@@ -137,14 +137,11 @@ module.exports.catalog = (req,res,next) =>{
 
 module.exports.insertcart=(req,res,next) => {
    // var user=new User();
-   let i=0;
-   console.log('I am near id'+i++)
     const id = req.params.id.toString();
-    console.log(id) 
     var found;
     var flag=false;
      
-    User.findOne({'_id': new ObjectID(id)},(err,user)=>{
+    User.findOne({"_id": id},(err,user)=>{
         if(!user)
         {     
             res.status(404).json({status:false,message:'user record not found'});
