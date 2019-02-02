@@ -96,6 +96,7 @@ module.exports.userProfile = (req,res,next) =>{
     const id=req._id;
     const details = { '_id': new ObjectID(id) };
     User.findOne(details,(err,user)=>{
+        res.json({user:user})
         if(!user)
         {
             res.status(404).json({status:false,message:'user record not found'});
