@@ -94,7 +94,7 @@ module.exports.authenticate = (req,res,next) =>{
 }
 module.exports.userProfile = (req,res,next) =>{
 
-    User.findOne({_id: new ObjectID("5c557da953f4aa0004d61dbe")},(err,user)=>{
+    User.findOne({_id: ObjectID(req._id)},(err,user)=>{
         if(!user)
         {
             res.status(404).json({status:false,message:'user record not found'});
