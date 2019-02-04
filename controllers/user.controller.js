@@ -106,9 +106,8 @@ module.exports.catalog = (req,res,next) =>{
           console.log(id) 
           var found;
           var flag=false;
-            
-          User.find({'_id': new ObjectID(id)},(err,user)=>{
-             if(!user)
+          User.findOne({'_id': new ObjectID(id)}).exec(function (err, user) {
+            if(!user)
              {     
                  res.status(404).json({status:false,message:'user record not found'});
              }
@@ -124,7 +123,7 @@ module.exports.catalog = (req,res,next) =>{
                      if(err)
                      console.log(err)
                      else
-                     return res.redirect('/')
+                     return res.json(docs)
                  })
                 }
                 else
@@ -145,7 +144,7 @@ module.exports.catalog = (req,res,next) =>{
                      if(err)
                      console.log(err)
                      else
-                     return res.redirect('/')
+                     return res.json(docs)
                   })
                  }
                  else 
@@ -154,8 +153,8 @@ module.exports.catalog = (req,res,next) =>{
                      console.log(this.found)
                      this.found.quantity++;
                      user.save(function(err,docs){
-                    return res.redirect('/')
-                }) 
+                    return res.json(docs)
+                              }) 
                   this.flag=false;
                  }
                  
@@ -163,7 +162,7 @@ module.exports.catalog = (req,res,next) =>{
                 }
               
              }
-         })(req,res);
+           });
          }
 
       
