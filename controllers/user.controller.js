@@ -117,7 +117,7 @@ module.exports.catalog = (req,res,next) =>{
                 console.log(user.cart)
                 if(user.cart.length==0)
                 {
-                 console.log('first item')
+                 console.log('first item tt')
                  user.cart.push({product:req.body._id,quantity:0})
                  user.save(function(err,docs){
                      if(err)
