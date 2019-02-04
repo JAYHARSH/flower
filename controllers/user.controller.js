@@ -107,14 +107,14 @@ module.exports.catalog = (req,res,next) =>{
           var found;
           var flag=false;
             
-          User.findOne({'_id': new ObjectID(id)},(err,user)=>{
+          User.find({'_id': new ObjectID(id)},(err,user)=>{
              if(!user)
              {     
                  res.status(404).json({status:false,message:'user record not found'});
              }
              else 
              {  
-                 console.log('I am near inside else')
+                console.log('I am near inside else')
                 console.log(user.cart)
                 if(user.cart.length==0)
                 {
@@ -124,7 +124,7 @@ module.exports.catalog = (req,res,next) =>{
                      if(err)
                      console.log(err)
                      else
-                     return res.json(docs)
+                     return res.redirect('/')
                  })
                 }
                 else
@@ -145,7 +145,7 @@ module.exports.catalog = (req,res,next) =>{
                      if(err)
                      console.log(err)
                      else
-                     return res.json(docs)
+                     return res.redirect('/')
                   })
                  }
                  else 
@@ -154,7 +154,7 @@ module.exports.catalog = (req,res,next) =>{
                      console.log(this.found)
                      this.found.quantity++;
                      user.save(function(err,docs){
-                    return res.json(docs)
+                    return res.redirect('/')
                 }) 
                   this.flag=false;
                  }
