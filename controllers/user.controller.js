@@ -88,7 +88,7 @@ module.exports.catalog = (req,res,next) =>{
     Product.find((err,product)=>{
         if(err)
         {
-            res.status(404).json({status:false,message:'product record not found'});
+            res.status(404).json({status:false,message:'product recordaa not found'});
         }
         else
         {
