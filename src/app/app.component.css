@@ -13,7 +13,7 @@ header p{
 header app-navbar
 {   
     font-family: 'Pacifico', cursive;
-    margin-left:70%;
+    margin-right:70%;
     border:1px solid green;
     background-color:pink;
     position:fixed;
